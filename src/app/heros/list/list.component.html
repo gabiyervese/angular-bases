@@ -1,0 +1,33 @@
+<h3>Listado de heroes</h3>
+
+<div>
+  <!-- En el *nfIf agregamos el condicional "else" y ahi colocamos el nombre de la
+  referencia que estara conectada al "ng-template" para que asi el condicional
+  incluya a este elemento al momento de mostrar el cambio realizado a las
+  propiedades de estos elementos. -->
+  <h3 *ngIf="deletedHero; else nothingWasDeleted">
+    Heroe borrado:
+    <small class="text-danger">{{ deletedHero }}</small>
+  </h3>
+  <!-- Esto quiere decir que si "deletedHero es falso va a mostrar "heroe borrado",
+  si es true mostrara "no ha borrado nada" -->
+</div>
+<!-- El elemento "ng-template" tiene la misma funcion que "<></>", es una opcion para no usar un div -->
+<!-- y puede llevar una "referencia local" la cual definimos con el # -->
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger"
+>
+  Borrar ultimo heroe
+</button>
+
+<ul class="mt-2 list-group">
+  <!-- *ngFor convierte un elemento html en un template y lo usa para multiplicarlo
+  basandose en la cantidad de elementos dentro de la lista que esta recorriendo. -->
+  <li *ngFor="let name of heroNames" class="list-group-item">{{ name }}</li>
+</ul>

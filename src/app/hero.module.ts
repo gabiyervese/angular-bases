@@ -7,10 +7,9 @@ import { ListComponent } from './heros/list/list.component';
   declarations: [
     // components
     HeroComponent,
-    ListComponent,
   ],
-  //aqui exportamos el componente, tambien puedo exportar otras cosas.
-  exports: [HeroComponent, ListComponent],
+  //aqui exportamos el componente que contiene el modulo que queremos compartir, tambien puedo exportar otras cosas.
+  exports: [HeroComponent],
   // CommonModule son los modulos que contienen las directivas incluidas, si en los componentes relacionados a este modulo las utilizo debo importarlo
   imports: [CommonModule],
 })

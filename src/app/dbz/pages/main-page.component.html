@@ -1,0 +1,19 @@
+<h1>DBZ main page</h1>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <!-- Aqui le pasamos al componente "characterList" la propiedad "characters" definida en "MainPageComponent" y fue recibida por el componente hijo a traves de @Input -->
+    <dbz-list
+      [characterList]="characters"
+      (onDelete)="onDeleteCharacter($event)"
+    ></dbz-list>
+  </div>
+  <div class="col">
+    <!-- Este componente personalizado puede o no emitir valores, los cuales su componente padre puede necesitar escuchar por lo que se suscribe a el a la escucha de sus emisiones. Y en este caso actualizar la lista de personajes al agregar un nuevo personaje, es decir, el padre que es "main component" toma lainfo del personaje agregado de su hijo "addCharacter" y lo usa para agregarlo a la lista de personajes y actualizarla con el nuevo pj -->
+    <dbz-add-character
+      (onNewCharacter)="onNewCharacter($event)"
+    ></dbz-add-character>
+    <!-- Aqui agregamos "(onNewCharacter)="addCharacter($event)" en el que se encuentra el evento que emite el hijo y el metodo con el que el padre escucha, y como argumento usamos "$event" ya que es un nombre especializado que Angular utiliza para saber enviar claramente el valor que esta emitiendo el hijo y pasarselo al padre  -->
+  </div>
+</div>
